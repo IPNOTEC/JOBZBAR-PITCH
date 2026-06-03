@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>JOBZ.BAR · Investor Brief · 2026</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;600&display=swap');
 
@@ -212,7 +218,147 @@
     .founder-grid{grid-template-columns:1fr}
     .slide{padding:1.5rem}
   }
+
+  /* ═══════════════════════════════════════════════════
+     ── SURGICAL ADD 1 · ROTATE PROMPT ──
+     Shows only on portrait orientation on mobile.
+     Overlay is dismissible via "view anyway" link.
+  ═══════════════════════════════════════════════════ */
+  .rotate-prompt{
+    display:none;
+    position:fixed;inset:0;z-index:9999;
+    background:var(--dark);
+    flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:2.5rem;
+  }
+  @media(orientation:portrait) and (max-width:900px){
+    .rotate-prompt{display:flex}
+  }
+  .rp-icon{margin-bottom:1.75rem}
+  .rp-icon-wrap{
+    display:inline-block;
+    animation:rp-rock 2.2s ease-in-out infinite;
+    transform-origin:center center;
+  }
+  @keyframes rp-rock{
+    0%,100%{transform:rotate(-8deg)}
+    45%,55%{transform:rotate(90deg)}
+    50%{transform:rotate(92deg)}
+  }
+  .rp-title{
+    font-family:var(--font-h);
+    font-size:1rem;
+    color:var(--amber);
+    letter-spacing:5px;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:.9rem;
+  }
+  .rp-sub{
+    font-size:.75rem;
+    color:#555;
+    line-height:1.9;
+    margin-bottom:.4rem;
+  }
+  .rp-hint{
+    font-size:.58rem;
+    color:#242424;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:2.5rem;
+    font-family:var(--font-b);
+  }
+  .rp-skip{
+    display:inline-block;
+    font-size:.58rem;
+    color:#1e1e1e;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    cursor:pointer;
+    padding:.5rem 1.5rem;
+    border:1px solid #1a1a1a;
+    transition:color .2s, border-color .2s;
+    font-family:var(--font-b);
+    user-select:none;
+  }
+  .rp-skip:hover{color:var(--amber);border-color:rgba(255,105,0,.25)}
+
+  /* ═══════════════════════════════════════════════════
+     ── SURGICAL ADD 2 · MVP LINK + WHATSAPP CTA ──
+  ═══════════════════════════════════════════════════ */
+  .mvp-cta,.wa-cta{
+    display:block;
+    text-decoration:none;
+    padding:.95rem 1.5rem;
+    margin:.7rem auto;
+    max-width:480px;
+    border-radius:2px;
+    transition:background .2s;
+    text-align:left;
+  }
+  .mvp-cta{
+    background:rgba(57,255,20,.05);
+    border:1px solid rgba(57,255,20,.18);
+    border-left:3px solid var(--green);
+  }
+  .mvp-cta:hover{background:rgba(57,255,20,.09)}
+  .wa-cta{
+    background:rgba(37,211,102,.05);
+    border:1px solid rgba(37,211,102,.18);
+    border-left:3px solid #25D366;
+  }
+  .wa-cta:hover{background:rgba(37,211,102,.09)}
+  .ext-lbl{
+    font-size:.52rem;
+    letter-spacing:3px;
+    color:#333;
+    text-transform:uppercase;
+    margin-bottom:.3rem;
+    font-family:var(--font-b);
+  }
+  .ext-val{
+    font-family:var(--font-h);
+    font-size:.82rem;
+    font-weight:700;
+    letter-spacing:.5px;
+  }
+  .mvp-cta .ext-val{color:var(--green)}
+  .wa-cta .ext-val{color:#25D366}
 </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════
+       SURGICAL ADD 1 · ROTATE OVERLAY
+       Renders over entire viewport on portrait mobile.
+       SVG: faded portrait phone + solid landscape phone +
+       green arc arrow suggesting 90° clockwise rotation.
+  ═══════════════════════════════════════════════════ -->
+  <div class="rotate-prompt" id="rotatePrompt">
+    <div>
+      <div class="rp-icon">
+        <div class="rp-icon-wrap">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Portrait phone (faded / "current state") -->
+            <rect x="22" y="4" width="26" height="46" rx="4" stroke="#FF6900" stroke-width="1.3" opacity="0.18" stroke-dasharray="3 2"/>
+            <circle cx="35" cy="44" r="2.5" fill="#FF6900" opacity="0.15"/>
+            <!-- Landscape phone (target state) -->
+            <rect x="4" y="24" width="46" height="26" rx="4" stroke="#FF6900" stroke-width="1.5"/>
+            <circle cx="46" cy="37" r="2.5" fill="#FF6900" opacity="0.7"/>
+            <!-- Rotation arc (green) -->
+            <path d="M34 8 A28 28 0 0 1 62 32" stroke="#39FF14" stroke-width="1.5" fill="none" stroke-dasharray="5 3" opacity="0.8"/>
+            <!-- Arrowhead -->
+            <line x1="62" y1="32" x2="57" y2="28" stroke="#39FF14" stroke-width="1.5" opacity="0.8"/>
+            <line x1="62" y1="32" x2="58" y2="37" stroke="#39FF14" stroke-width="1.5" opacity="0.8"/>
+          </svg>
+        </div>
+      </div>
+      <div class="rp-title">Rotate Your Screen</div>
+      <div class="rp-sub">This pitch is engineered for landscape.<br>Turn your phone 90° for the full experience.</div>
+      <div class="rp-hint">not an app &nbsp;·&nbsp; a platform &nbsp;·&nbsp; act accordingly</div>
+      <div class="rp-skip" onclick="document.getElementById('rotatePrompt').style.display='none'">view in portrait anyway ›</div>
+    </div>
+  </div>
 
 <div class="deck">
 
@@ -485,7 +631,6 @@
         <div class="s-outcome">Product-market fit does not exist in current form. Pivot: test a curated invite-only model. Narrow to 2 venues. Rebuild community seeding strategy from scratch.</div>
       </div>
     </div>
-    <!-- Bar chart: visual comparison -->
     <div style="margin-top:1.5rem">
       <h3 style="margin-bottom:.75rem;font-size:.6rem;letter-spacing:2px;color:#333">SCENARIO COMPARISON · CONNECTIONS AT DAY 90</h3>
       <div class="bar-chart">
@@ -550,7 +695,6 @@
       </div>
     </div>
 
-    <!-- Phase 2 features table -->
     <div style="margin-top:1.25rem">
       <h3 class="c" style="margin-bottom:.5rem">PHASE 2 ACTIVATED FEATURES</h3>
       <table class="metrics-table">
@@ -636,7 +780,6 @@
       </div>
     </div>
 
-    <!-- Use of funds -->
     <div style="margin:1.25rem auto;max-width:600px">
       <h3 style="font-size:.58rem;letter-spacing:3px;color:#333;margin-bottom:.75rem">USE OF ₹20L VALIDATION CAPITAL</h3>
       <div class="bar-chart">
@@ -664,7 +807,7 @@
       <div class="vg-text">Prove that physical presence can become<br>the next professional social graph.</div>
     </div>
 
-    <div style="margin-top:1.25rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);max-width:520px;margin-left:auto;margin-right:auto">
+    <div style="margin:1.25rem auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);max-width:520px">
       <div style="background:var(--card);padding:.9rem;text-align:center">
         <div style="font-family:var(--font-h);font-size:1rem;color:var(--green);font-weight:700">1,000+</div>
         <div style="font-size:.58rem;color:#333;letter-spacing:2px;margin-top:.2rem;text-transform:uppercase">Users</div>
@@ -679,7 +822,24 @@
       </div>
     </div>
 
+    <!-- ═══════════════════════════════════════════════════
+         SURGICAL ADD 2 · MVP LINK + WHATSAPP CTA
+         Placed above footer strip in CTA slide.
+    ═══════════════════════════════════════════════════ -->
+    <div style="margin-top:1.75rem">
+      <a href="https://jb-phase1.vercel.app" target="_blank" rel="noopener" class="mvp-cta">
+        <div class="ext-lbl">First MVP · Live Now · Experience The Emulation</div>
+        <div class="ext-val">jb-phase1.vercel.app →</div>
+      </a>
+      <a href="https://wa.me/919115481001" target="_blank" rel="noopener" class="wa-cta">
+        <div class="ext-lbl">Collaborate · WhatsApp Direct</div>
+        <div class="ext-val">+91 91154 81001 →</div>
+      </a>
+    </div>
+
     <div class="footer-strip">JOBZ.BAR™ · AN IPNOTEC VENTURE · BENGALURU · 2026 · DPIIT REGISTERED</div>
   </div>
 
 </div>
+</body>
+</html>
